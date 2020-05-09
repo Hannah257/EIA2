@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="Haushaltshilfe.css">
+    <script src="Haushaltshilfe.js" async></script>
+    <title>Haushaltshilfe Formular</title>
+</head>
+
+<body>
+    <header>
+        <h1>Haushaltshilfe gesucht? Dann sind Sie hier genau richtig!</h1>
+        <p>Wählen Sie die untenstehenden Aufgaben aus, die für Sie in Frage kommen:</p>
+    </header>
+
+    <h3>Wählen Sie hier ihren Einkauf</h3>
+    <fieldset>
+        <legend>Einkaufen</legend>
+        <select name="Grocery" id="grocery">
+            <option value="Butter" unit="500g" price="2.00">Butter</option>
+            <option value="Mehl" unit="1kg-Packung" price="2.50">Mehl</option>
+            <option value="Milch" unit="1l-Flasche" price="1.00">Milch</option>
+            <option value="Kiwis" unit="300g" price="2.00">Kiwis</option>
+        </select>
+    </fieldset>
+
+    <fieldset>
+        <legend>Menge</legend>
+        <span id="slider">
+            <span>
+                1
+                <input type="range" min="1.0" max="5.0" name="Menge" id="Quantity" step="1.0" value="1.0">
+                5
+            </span>
+        </span>
+    </fieldset>
+
+
+    <h3>Wählen Sie hier die Aufgaben, die im Haus übernommen werden sollen</h3>
+    <fieldset>
+        <legend>Haushaltsaufgaben</legend>
+        <select name="Tasks" id="tasks">
+            <option value="wischen" price="5.00">Boden wischen</option>
+            <option value="staubsaugen" price="10.00">Stausaugen</option>
+            <option value="gassi" price="10.00">Gassi gehen</option>
+            <option value="rasen" price="15.00">Rasen mähen</option>
+        </select>
+    </fieldset>
+
+    <fieldset>
+        <legend>Genauere Angaben zu Zeit und Intensität:</legend>
+        <input type="radio" name="time" id="daily" value="Daily" checked />
+        <label for="daily">Täglich</label>
+        <input type="radio" name="time" id="weekly" value="Weekly" />
+        <label for="weekly">Wöchentlich</label>
+        <input type="radio" name="time" id="monthly" value="Monthly" />
+        <label for="monthly">Monatlich</label>
+
+        <p>Anzahl in Stunden</p>
+        <span id="slider">
+            <span>
+                1h
+                <input type="range" min="1.0" max="5.0" name="Menge" id="Quantity" step="1.0" value="1.0">
+                3h
+            </span>
+        </span>
+    </fieldset>
+
+
+    <h3>Geld abheben oder einzahlen lassen</h3>
+    <fieldset>
+        <legend>Wählen Sie aus, ob Sie Geld abheben oder einzahlen lassen wollen:</legend>
+        <input type="radio" name="time" id="abheben" value="Abheben" checked />
+        <label>Abheben</label>
+        <input type="radio" name="time" id="einzahlen" value="Einzahlen" checked />
+        <label>Einzahlen</label>
+
+        <p>Geldbetrag</p>
+        <span id="slider">
+            <span>
+                10€
+                <input type="range" min="1.0" max="5.0" name="Menge" id="Quantity" step="1.0" value="1.0">
+                150€
+            </span>
+        </span>
+    </fieldset>
+
+    <h2>Bestellübersicht</h2>
+    <fieldset>
+        <legend>Bitte überprüfen Sie ihre Bestellungen vor dem Abschicken!</legend>
+    </fieldset>
+
+</body>
+
+</html>
