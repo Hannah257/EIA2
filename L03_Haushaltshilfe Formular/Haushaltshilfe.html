@@ -17,7 +17,14 @@
 
     <h3>Wählen Sie hier ihren Einkauf</h3>
     <fieldset>
-        <legend>Einkaufen</legend>
+        <legend>Bitte wählen Sie den Supermarkt und die Artikel</legend>
+        <select name="markt" id="markt">
+            <option value="Edeka">Edeka</option>
+            <option value="Rewe">Rewe</option>
+            <option value="Kaufland">Kaufland</option>
+            <option value="Lidl">Lidl</option>
+            <option value="Aldi">Aldi</option>
+        </select>
         <select name="Grocery" id="grocery">
             <option value="Butter" unit="500g" price="2.00">Butter</option>
             <option value="Mehl" unit="1kg-Packung" price="2.50">Mehl</option>
@@ -58,7 +65,7 @@
         <input type="radio" name="time" id="monthly" value="Monthly" />
         <label for="monthly">Monatlich</label>
 
-        <p>Anzahl in Stunden</p>
+        <p>Intensität in Stunden</p>
         <span id="slider">
             <span>
                 1h
@@ -90,6 +97,8 @@
     <h2>Bestellübersicht</h2>
     <fieldset>
         <legend>Bitte überprüfen Sie ihre Bestellungen vor dem Abschicken!</legend>
+        <div id="order">
+        </div>
     </fieldset>
 
 </body>
