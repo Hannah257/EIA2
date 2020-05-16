@@ -1,27 +1,28 @@
+"use strict";
 var L02_Sequenzmemory;
 (function (L02_Sequenzmemory) {
-    var predefined = document.getElementById("predefined");
-    var own = document.getElementById("own");
-    var selectPredefined = document.getElementById("selectPredefined");
-    var inputOwn = document.getElementById("inputOwn");
-    var duration = document.getElementById("duration");
-    var time = document.getElementById("time");
-    var startDuration = document.getElementById("StartDuration");
-    var startTime = document.getElementById("StartTime");
-    var timer = document.getElementById("timer");
-    var score = document.getElementById("score");
-    var playground = document.getElementById("playground");
+    let predefined = document.getElementById("predefined");
+    let own = document.getElementById("own");
+    let selectPredefined = document.getElementById("selectPredefined");
+    let inputOwn = document.getElementById("inputOwn");
+    let duration = document.getElementById("duration");
+    let time = document.getElementById("time");
+    let startDuration = document.getElementById("StartDuration");
+    let startTime = document.getElementById("StartTime");
+    let timer = document.getElementById("timer");
+    let score = document.getElementById("score");
+    let playground = document.getElementById("playground");
     function mixCards(_letter) {
-        var abc = _letter.split("");
-        var ctr = abc.length;
+        let abc = _letter.split("");
+        let ctr = abc.length;
         while (ctr > 0) {
-            var index = Math.floor(Math.random() * ctr);
+            let index = Math.floor(Math.random() * ctr);
             ctr--;
-            var temp = abc[ctr];
+            let temp = abc[ctr];
             abc[ctr] = abc[index];
             abc[index] = temp;
         }
-        var length = abc.length;
+        let length = abc.length;
         startTime(length, abc, _letter);
     }
     startTime.addEventListener("click", Input);
