@@ -1,0 +1,23 @@
+{
+    "name": "eiazweihaushaltshilfe",
+    "version": "1.0.0",
+    "description": "EIA2",
+    "main": "",
+    "dependencies": {
+      "@types/node": "^14.0.5"
+    },
+    "devDependencies": {},
+    "scripts": {
+      "start": "node L06_Server/Haushaltshilfe/L06_Code.js"
+    },
+    "repository": {
+      "type": "git",
+      "url": "git+https://github.com/Hannah257/EIA2_SoSe2020.git"
+    },
+    "author": "Hannah",
+    "license": "ISC",
+    "bugs": {
+      "url": "https://github.com/Hannah257/EIA2_SoSe2020/issues"
+    },
+    "homepage": "https://github.com/Hannah257/EIA2_SoSe2020#ReadMe"
+  }
