@@ -8,7 +8,7 @@
     },
     "devDependencies": {},
     "scripts": {
-      "start": "node L06_Server/Haushaltshilfe/L06_Code.js"
+      "start": "node L06_Server/L06_Test/Convert.js"
     },
     "repository": {
       "type": "git",
