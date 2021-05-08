@@ -4,18 +4,17 @@ namespace L08_GenerativeArt {
     function handleLoad(): void {
         let canvas: HTMLCanvasElement = <HTMLCanvasElement> document.querySelector("canvas");
         let crc2: CanvasRenderingContext2D = <CanvasRenderingContext2D> canvas.getContext("2d");
-         
-       
-       
+        
+    
         let farbpalette: string[] = ["lightblue", "cadetblue", "cornflowerblue", "darkgrey"];
     
-        for (let index: number = 0; index < 300; index++) {
-            let x: number = Math.floor(Math.random() * Math.floor(canvas.width));
-            let y: number = Math.floor(Math.random() * Math.floor(canvas.height));
-            let a: number = Math.floor(Math.random() * Math.floor(canvas.width));
-            let b: number = Math.floor(Math.random() * Math.floor(canvas.height));
-            let a1: number = Math.floor(Math.random() * Math.floor(canvas.width));
-            let b1: number = Math.floor(Math.random() * Math.floor(canvas.height));
+        for (let index: number = 0; index < 50; index++) {
+            let x: number = Math.floor(Math.random());
+            let y: number = Math.floor(Math.random());
+            let a: number = Math.floor(Math.random());
+            let b: number = Math.floor(Math.random());
+            let a1: number = Math.floor(Math.random());
+            let b1: number = Math.floor(Math.random());
     
             let getColor: number = Math.floor(Math.random() * Math.floor(4));
 
@@ -46,7 +45,13 @@ namespace L08_GenerativeArt {
             crc2.lineTo(a, b);
             crc2.lineTo(a1, b1);
             crc2.stroke();
-        
+
+            crc2.beginPath();
+            crc2.arc( x, y, 150, 0, 2 * Math.PI , false);
+            crc2.fillStyle = farbpalette[getColor];
+            crc2.strokeStyle = farbpalette[getColor];
+            crc2.strokeRect(50, 50, 50, 50);
+            crc2.closePath();
         }
     }
 }
