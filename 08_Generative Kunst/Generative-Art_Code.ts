@@ -5,8 +5,7 @@ namespace L08_GenerativeArt {
         let canvas: HTMLCanvasElement = <HTMLCanvasElement> document.querySelector("canvas");
         let crc2: CanvasRenderingContext2D = <CanvasRenderingContext2D> canvas.getContext("2d");
          
-        canvas.width = 1000;
-        canvas.height = 600;
+       
        
         let farbpalette: string[] = ["lightblue", "cadetblue", "cornflowerblue", "darkgrey"];
     
