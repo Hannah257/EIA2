@@ -88,9 +88,11 @@ var L08_Blumenwiese;
         crc2.closePath();
     }
     function drawFlower(_x, _y) {
+        //Stängel
         crc2.beginPath();
         crc2.fillStyle = "#088A29";
         crc2.fillRect(_x - 2, _y + 10, 3, 35);
+        //Blüte
         crc2.beginPath();
         crc2.fillStyle = "#F7819F";
         crc2.moveTo(_x, _y);
@@ -100,6 +102,7 @@ var L08_Blumenwiese;
         crc2.arc(_x - 8, _y - 4, 7, 0, 2 * Math.PI);
         crc2.arc(_x + 8, _y - 4, 7, 0, 2 * Math.PI);
         crc2.fill();
+        //Blütenmitte
         crc2.beginPath();
         crc2.fillStyle = "#F8E0E6";
         crc2.arc(_x, _y, 5, 0, 2 * Math.PI);
@@ -107,12 +110,14 @@ var L08_Blumenwiese;
         crc2.closePath();
     }
     function drawTulips(_x, _y) {
+        //Stängel
         crc2.beginPath();
         crc2.fillStyle = "#088A29";
         crc2.fillRect(_x + 9, _y + 28, 3, 30);
+        //Blüte
         crc2.beginPath();
         crc2.fillStyle = "#DF7401";
-        crc2.arc(_x + 10, _y + 20, 10, 0, 1 * Math.PI);
+        crc2.arc(_x + 10, _y + 20, 10, 0, Math.PI * 2);
         crc2.moveTo(_x, _y + 22);
         crc2.lineTo(_x, _y + 7);
         crc2.lineTo(_x + 6, _y + 14);
