@@ -1,0 +1,18 @@
+canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+#field {
+    background-color: limegreen;
+    margin-top: 3%;
+    margin-left: 3%;
+}
+
+#players {
+    background-color: rgba(0, 0, 0, 0);
+    margin-top: 3%;
+    margin-left: 3%;
+
+}
