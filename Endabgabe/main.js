@@ -1,164 +1,162 @@
 "use strict";
-var simulation;
-(function (simulation) {
+var football;
+(function (football) {
     window.addEventListener("load", handleLoad);
-    simulation.scale = window.devicePixelRatio;
-    //Team Red
-    let x = [10, 150, 150, 150, 150, 425, 425, 425, 725, 750, 725];
+    football.scale = window.devicePixelRatio;
+    //Team Rot
+    let x = [30, 200, 180, 180, 200, 400, 450, 400, 720, 730, 720];
     let y = [350, 125, 275, 425, 575, 175, 350, 525, 125, 350, 575];
-    //Team Blue
-    let a = [990, 850, 850, 850, 850, 575, 575, 575, 275, 250, 275];
+    //Team Blau
+    let a = [970, 815, 855, 855, 815, 610, 550, 610, 300, 300, 300];
     let b = [350, 575, 425, 275, 125, 525, 350, 175, 575, 350, 125];
     //Spieler
-    let guys = [];
+    let people = [];
     let colors = ["red", "blue"];
+    /*
+    //Position des Klicks
+    export let clickX: number;
+    export let clickY: number;
+
+    export let ball: Ball;
+    export let positionBall: Vector;
+    */
     let playerPosition;
     function handleLoad() {
-        simulation.canvasPlayers = document.getElementById("players");
-        simulation.crc2Players = simulation.canvas.getContext("2d");
-        ;
-        simulation.canvas = document.getElementById("field");
-        simulation.crc2 = simulation.canvas.getContext("2d");
-        simulation.canvas.width = 1000 * simulation.scale;
-        simulation.canvas.height = 700 * simulation.scale;
-        simulation.canvasPlayers.width = 1000 * simulation.scale;
-        simulation.canvasPlayers.height = 700 * simulation.scale;
+        football.canvasBall = document.getElementById("ball");
+        football.crc2Ball = football.canvasBall.getContext("2d");
+        football.canvasPlayers = document.getElementById("players");
+        football.crc2Players = football.canvasBall.getContext("2d");
+        football.canvas = document.getElementById("field");
+        football.crc2 = football.canvas.getContext("2d");
+        football.canvas.width = 1000 * football.scale;
+        football.canvas.height = 700 * football.scale;
+        football.canvasBall.width = 1000 * football.scale;
+        football.canvasBall.height = 700 * football.scale;
+        football.canvasPlayers.width = 1000 * football.scale;
+        football.canvasPlayers.height = 700 * football.scale;
+        football.canvasBall.addEventListener("click", handleClick);
         createField();
         placePlayersTeamRed(0);
         placePlayersTeamBlue(0);
+        /*
+        positionBall = new Vector(500 * scale, 350 * scale);
+        ball = new Ball(positionBall);
+        ball.draw();
+        */
     }
+    function handleClick(_event) {
+        /* console.log("clicked");
+        let rectangle: DOMRect = canvasBall.getBoundingClientRect();
+        clickX = _event.clientX - rectangle.left;
+        clickY = _event.clientY - rectangle.top;
+        setInterval(moveBall, 20); */
+    }
+    /* function moveBall(): void {
+        crc2Ball.clearRect(0, 0, canvasBall.width, canvasBall.height);
+        ball.move(1 / 50);
+        ball.draw();
+    } */
     function placePlayersTeamRed(_s) {
         let players = [];
         for (let i = 0; i < 11; i++) {
-            playerPosition = new simulation.Vector(x[_s] * simulation.scale, y[_s] * simulation.scale);
-            let player = new simulation.Player(playerPosition);
+            playerPosition = new football.Vector(x[_s] * football.scale, y[_s] * football.scale);
+            let player = new football.Player(playerPosition);
             player.draw(colors[0]);
             players.splice(_s, 0, _s);
             _s += 1;
         }
-        guys.splice(0, 0, players);
-        console.log(guys[0]);
+        people.splice(0, 0, players);
+        console.log(people[0]);
     }
     function placePlayersTeamBlue(_t) {
         let players = [];
         for (let i = 0; i < 11; i++) {
-            playerPosition = new simulation.Vector(a[_t] * simulation.scale, b[_t] * simulation.scale);
-            let player = new simulation.Player(playerPosition);
+            playerPosition = new football.Vector(a[_t] * football.scale, b[_t] * football.scale);
+            let player = new football.Player(playerPosition);
             player.draw(colors[1]);
             players.splice(_t, 0, _t);
             _t += 1;
         }
-        guys.splice(1, 0, players);
-        console.log(guys[1]);
+        people.splice(1, 0, players);
+        console.log(people[1]);
     }
     function createField() {
         //Mittellinie
-        simulation.crc2.beginPath();
-        simulation.crc2.moveTo(500 * simulation.scale, 0);
-        simulation.crc2.lineTo(500 * simulation.scale, 700 * simulation.scale);
-        simulation.crc2.strokeStyle = "rgba(255, 255, 255, 0.5)";
-        simulation.crc2.lineWidth = 4;
-        simulation.crc2.stroke();
-        simulation.crc2.closePath();
-        //Spielfeldumrandung
-        simulation.crc2.beginPath();
-        simulation.crc2.moveTo(0, 0);
-        simulation.crc2.lineTo(1000 * simulation.scale, 0);
-        simulation.crc2.lineTo(1000 * simulation.scale, 700 * simulation.scale);
-        simulation.crc2.lineTo(0, 700 * simulation.scale);
-        simulation.crc2.lineTo(0, 0);
-        simulation.crc2.strokeStyle = "rgba(255, 255, 255, 0.5)";
-        simulation.crc2.lineWidth = 8;
-        simulation.crc2.stroke();
-        simulation.crc2.closePath();
+        football.crc2.beginPath();
+        football.crc2.moveTo(500 * football.scale, 0);
+        football.crc2.lineTo(500 * football.scale, 700 * football.scale);
+        football.crc2.strokeStyle = "white";
+        football.crc2.lineWidth = 4;
+        football.crc2.stroke();
+        football.crc2.closePath();
         //Mittelkreis
-        simulation.crc2.beginPath();
-        simulation.crc2.arc(500 * simulation.scale, 350 * simulation.scale, 90, 0, 2 * Math.PI);
-        simulation.crc2.strokeStyle = "rgba(255, 255, 255, 0.5)";
-        simulation.crc2.lineWidth = 4;
-        simulation.crc2.stroke();
-        simulation.crc2.closePath();
-        //Tor links
-        simulation.crc2.beginPath();
-        simulation.crc2.moveTo(0, 315 * simulation.scale);
-        simulation.crc2.lineTo(6 * simulation.scale, 315 * simulation.scale);
-        simulation.crc2.moveTo(0, 385 * simulation.scale);
-        simulation.crc2.lineTo(6 * simulation.scale, 385 * simulation.scale);
-        simulation.crc2.strokeStyle = "rgba(255, 255, 255, 0.5)";
-        simulation.crc2.lineWidth = 4;
-        simulation.crc2.stroke();
-        simulation.crc2.closePath();
-        //Torraum links
-        simulation.crc2.beginPath();
-        simulation.crc2.moveTo(0, 260 * simulation.scale);
-        simulation.crc2.lineTo(55 * simulation.scale, 260 * simulation.scale);
-        simulation.crc2.lineTo(55 * simulation.scale, 440 * simulation.scale);
-        simulation.crc2.lineTo(0, 440 * simulation.scale);
-        simulation.crc2.strokeStyle = "rgba(255, 255, 255, 0.5)";
-        simulation.crc2.lineWidth = 4;
-        simulation.crc2.stroke();
-        simulation.crc2.closePath();
-        //Strafraum links
-        simulation.crc2.beginPath();
-        simulation.crc2.moveTo(0, 150 * simulation.scale);
-        simulation.crc2.lineTo(165 * simulation.scale, 150 * simulation.scale);
-        simulation.crc2.lineTo(165 * simulation.scale, 550 * simulation.scale);
-        simulation.crc2.lineTo(0, 550 * simulation.scale);
-        simulation.crc2.strokeStyle = "rgba(255, 255, 255, 0.5)";
-        simulation.crc2.lineWidth = 4;
-        simulation.crc2.stroke();
-        simulation.crc2.closePath();
-        //Tor rechts
-        simulation.crc2.beginPath();
-        simulation.crc2.moveTo(1000 * simulation.scale, 315 * simulation.scale);
-        simulation.crc2.lineTo(994 * simulation.scale, 315 * simulation.scale);
-        simulation.crc2.moveTo(1000 * simulation.scale, 385 * simulation.scale);
-        simulation.crc2.lineTo(994 * simulation.scale, 385 * simulation.scale);
-        simulation.crc2.strokeStyle = "rgba(255, 255, 255, 0.5)";
-        simulation.crc2.lineWidth = 4;
-        simulation.crc2.stroke();
-        simulation.crc2.closePath();
-        //Torraum rechts
-        simulation.crc2.beginPath();
-        simulation.crc2.moveTo(1000 * simulation.scale, 260 * simulation.scale);
-        simulation.crc2.lineTo(945 * simulation.scale, 260 * simulation.scale);
-        simulation.crc2.lineTo(945 * simulation.scale, 440 * simulation.scale);
-        simulation.crc2.lineTo(1000 * simulation.scale, 440 * simulation.scale);
-        simulation.crc2.strokeStyle = "rgba(255, 255, 255, 0.5)";
-        simulation.crc2.lineWidth = 4;
-        simulation.crc2.stroke();
-        simulation.crc2.closePath();
-        //Strafraum rechts
-        simulation.crc2.beginPath();
-        simulation.crc2.moveTo(1000 * simulation.scale, 150 * simulation.scale);
-        simulation.crc2.lineTo(835 * simulation.scale, 150 * simulation.scale);
-        simulation.crc2.lineTo(835 * simulation.scale, 550 * simulation.scale);
-        simulation.crc2.lineTo(1000 * simulation.scale, 550 * simulation.scale);
-        simulation.crc2.strokeStyle = "rgba(255, 255, 255, 0.5)";
-        simulation.crc2.lineWidth = 4;
-        simulation.crc2.stroke();
-        simulation.crc2.closePath();
+        football.crc2.beginPath();
+        football.crc2.arc(500 * football.scale, 350 * football.scale, 90, 0, 2 * Math.PI);
+        football.crc2.strokeStyle = "white";
+        football.crc2.lineWidth = 4;
+        football.crc2.stroke();
+        football.crc2.closePath();
         //Mittelpunkt
-        simulation.crc2.beginPath();
-        simulation.crc2.arc(500 * simulation.scale, 350 * simulation.scale, 3, 0, 2 * Math.PI);
-        simulation.crc2.strokeStyle = "rgba(255, 255, 255, 0.5)";
-        simulation.crc2.lineWidth = 4;
-        simulation.crc2.stroke();
-        simulation.crc2.closePath();
-        //Elfer links
-        simulation.crc2.beginPath();
-        simulation.crc2.arc(110 * simulation.scale, 350 * simulation.scale, 2, 0, 2 * Math.PI);
-        simulation.crc2.strokeStyle = "rgba(255, 255, 255, 0.5)";
-        simulation.crc2.lineWidth = 4;
-        simulation.crc2.stroke();
-        simulation.crc2.closePath();
-        //Elfer rechts
-        simulation.crc2.beginPath();
-        simulation.crc2.arc(890 * simulation.scale, 350 * simulation.scale, 2, 0, 2 * Math.PI);
-        simulation.crc2.strokeStyle = "rgba(255, 255, 255, 0.5)";
-        simulation.crc2.lineWidth = 4;
-        simulation.crc2.stroke();
-        simulation.crc2.closePath();
+        football.crc2.beginPath();
+        football.crc2.arc(500 * football.scale, 350 * football.scale, 3, 0, 2 * Math.PI);
+        football.crc2.strokeStyle = "white";
+        football.crc2.lineWidth = 4;
+        football.crc2.stroke();
+        football.crc2.closePath();
+        //Tor links
+        football.crc2.beginPath();
+        football.crc2.moveTo(0, 260 * football.scale);
+        football.crc2.lineTo(55 * football.scale, 260 * football.scale);
+        football.crc2.lineTo(55 * football.scale, 440 * football.scale);
+        football.crc2.lineTo(0, 440 * football.scale);
+        football.crc2.strokeStyle = "white)";
+        football.crc2.lineWidth = 4;
+        football.crc2.stroke();
+        football.crc2.closePath();
+        //Strafraum links
+        football.crc2.beginPath();
+        football.crc2.moveTo(0, 150 * football.scale);
+        football.crc2.lineTo(165 * football.scale, 150 * football.scale);
+        football.crc2.lineTo(165 * football.scale, 550 * football.scale);
+        football.crc2.lineTo(0, 550 * football.scale);
+        football.crc2.strokeStyle = "white";
+        football.crc2.lineWidth = 4;
+        football.crc2.stroke();
+        football.crc2.closePath();
+        //Elfmeterpunkt links
+        football.crc2.beginPath();
+        football.crc2.arc(110 * football.scale, 350 * football.scale, 2, 0, 2 * Math.PI);
+        football.crc2.strokeStyle = "white";
+        football.crc2.lineWidth = 4;
+        football.crc2.stroke();
+        football.crc2.closePath();
+        //Tor rechts
+        football.crc2.beginPath();
+        football.crc2.moveTo(1000 * football.scale, 260 * football.scale);
+        football.crc2.lineTo(945 * football.scale, 260 * football.scale);
+        football.crc2.lineTo(945 * football.scale, 440 * football.scale);
+        football.crc2.lineTo(1000 * football.scale, 440 * football.scale);
+        football.crc2.strokeStyle = "white";
+        football.crc2.lineWidth = 4;
+        football.crc2.stroke();
+        football.crc2.closePath();
+        //Strafraum rechts
+        football.crc2.beginPath();
+        football.crc2.moveTo(1000 * football.scale, 150 * football.scale);
+        football.crc2.lineTo(835 * football.scale, 150 * football.scale);
+        football.crc2.lineTo(835 * football.scale, 550 * football.scale);
+        football.crc2.lineTo(1000 * football.scale, 550 * football.scale);
+        football.crc2.strokeStyle = "white";
+        football.crc2.lineWidth = 4;
+        football.crc2.stroke();
+        football.crc2.closePath();
+        //Elfmeterpunkt rechts
+        football.crc2.beginPath();
+        football.crc2.arc(890 * football.scale, 350 * football.scale, 2, 0, 2 * Math.PI);
+        football.crc2.strokeStyle = "white";
+        football.crc2.lineWidth = 4;
+        football.crc2.stroke();
+        football.crc2.closePath();
     }
-})(simulation || (simulation = {}));
+})(football || (football = {}));
 //# sourceMappingURL=main.js.map

@@ -1,4 +1,4 @@
-namespace simulation {
+namespace football {
 
     export class Vector {
         x: number;
@@ -8,14 +8,14 @@ namespace simulation {
             this.set(_x, _y);
         }
 
-        set(_x: number, _y: number): void {
-            this.x = _x;
-            this.y = _y;
-        }
-
         scale(_factor: number): void {
             this.x *= _factor;
             this.y *= _factor;
+        }
+
+        set(_x: number, _y: number): void {
+            this.x = _x;
+            this.y = _y;
         }
 
         add(_addend: Vector): void {
@@ -23,4 +23,6 @@ namespace simulation {
             this.y += _addend.y;
         }
     }
+
+
 }

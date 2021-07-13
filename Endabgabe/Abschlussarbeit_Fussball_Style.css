@@ -4,14 +4,20 @@ canvas {
     left: 0;
 }
 
+
 #field {
-    background-color: limegreen;
+    background-color: green;
     margin-top: 3%;
     margin-left: 3%;
 }
 
 #players {
-    background-color: rgba(0, 0, 0, 0);
+    margin-top: 3%;
+    margin-left: 3%;
+
+}
+
+#ball {
     margin-top: 3%;
     margin-left: 3%;
 
