@@ -22,6 +22,7 @@ var L08_GenerativeArt;
             crc2.lineTo(100, 75);
             crc2.fill();
             crc2.closePath();
+            crc2.stroke();
             crc2.beginPath();
             crc2.strokeStyle = farbpalette[getColor];
             crc2.moveTo(75, 25);
@@ -45,6 +46,7 @@ var L08_GenerativeArt;
             crc2.strokeStyle = farbpalette[getColor];
             crc2.strokeRect(50, 50, 50, 50);
             crc2.closePath();
+            crc2.stroke();
         }
     }
 })(L08_GenerativeArt || (L08_GenerativeArt = {}));
