@@ -7,7 +7,6 @@ namespace DoenerTrainer {
         Refilling,
         BacktoServing,
         Resting,
-        Servecostumer
     }
 
     export class Staff extends person {
