@@ -13,7 +13,7 @@ namespace DoenerTrainer {
         public active: boolean;
         public task: WORK;
         public target: Container;
-        private originalPosition: Vector;
+        private startingPosition: Vector;
         startingPosition: Vector;
 
         public constructor(_break: number) {
