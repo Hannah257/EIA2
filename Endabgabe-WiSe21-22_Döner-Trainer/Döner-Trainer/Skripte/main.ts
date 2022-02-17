@@ -86,7 +86,7 @@ namespace DoenerTrainer {
         }
     }
 
-    function handleCanvasClick(_event: MouseEvent): void {
+    function handleClick(_event: MouseEvent): void {
         let object: HTMLElement = <HTMLElement>_event.target;
         let rect: DOMRect = object.getBoundingClientRect();
         let scaling: Vector = new Vector(crc2.canvas.height / rect.height, crc2.canvas.width / rect.width);
